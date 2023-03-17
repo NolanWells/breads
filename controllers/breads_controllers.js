@@ -9,7 +9,7 @@ breads_router.get('/new', (req, res) => {
 })
 
 //Edit 
-breads_router.put('/:arrayIndex/edit', (req, res) => {
+breads_router.get('/:arrayIndex/edit', (req, res) => {
     res.render('edit',{
       bread: Bread[req.params.arrayIndex],
       index: req.params.arrayIndex,
