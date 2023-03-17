@@ -8,6 +8,14 @@ breads_router.get('/new', (req, res) => {
     res.render('new')
 })
 
+//Edit 
+breads_router.put('/:arrayIndex/edit', (req, res) => {
+    res.render('edit',{
+      bread: Bread[req.params.arrayIndex],
+      index: req.params.arrayIndex,
+    })
+})
+
 //Show
 breads_router.get('/:arrayIndex', (req, res) => {
     if (Bread[req.params.arrayIndex]){
@@ -21,6 +29,14 @@ breads_router.get('/:arrayIndex', (req, res) => {
     }
     //res.send(Bread[req.params.arrayIndex])
 })
+
+//Update
+breads_router.put('/:arrayIndex', (req, res) => {
+  req.body.hasGluten = req.body.hasGluten === 'on'
+  Bread[req.params.arrayIndex] = req.body
+  res.redirect(`/breads/${req.params.arrayIndex}`)
+})
+
 
 //Delete
 breads_router.delete('/:arrayIndex', (req, res) =>{
